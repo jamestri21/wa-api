@@ -8,6 +8,7 @@ const fs = require('fs');
 const { phoneNumberFormatter } = require('./helpers/formatter');
 const fileUpload = require('express-fileupload');
 const axios = require('axios');
+const port = process.env.PORT || 8000;
 
 const app = express();
 const server = http.createServer(app);
@@ -46,7 +47,7 @@ const client = new Client({
       '--single-process', // <- this one doesn't works in Windows
       '--disable-gpu'
     ],
-    
+
   },
   session: sessionCfg
 });
@@ -260,6 +261,6 @@ app.post('/send-group-message', [
 });
 
 
-server.listen(8000, function() {
-    console.log('App running on *: ' + 8000);
+server.listen(port, function() {
+    console.log('App running on *: ' + port);
 });
